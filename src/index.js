@@ -55,7 +55,8 @@ class RacingCarController {
     }
     
     // 우승자 출력
-    this.model.showWinner();
+    const winnerList = this.model.calcWinner();
+    this.view.showWinner(winnerList);
   }
 }
 

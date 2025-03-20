@@ -54,6 +54,20 @@ export class Car {
     return movedResult;
   }
 
-  // 우승자 출력
-  showWinner() {}
+  // 가장 멀리간 자동차 리스트 반환
+  calcWinner() {
+    const { winnerList } = this.carList.reduce(
+      (acc, car) => {
+        if (car.totalDistance > acc.winnerDistance) {
+          acc.winnerDistance = car.totalDistance;
+          acc.winnerList = [ car.name ];
+        } else if (car.totalDistance === acc.winnerDistance) {
+          acc.winnerList.push(car.name);
+        }
+        return acc;
+      }, { winnerList: [], winnerDistance: 0 } // 초기값 설정
+    );
+
+    return winnerList;
+  }
 }

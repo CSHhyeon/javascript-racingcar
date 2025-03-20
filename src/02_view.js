@@ -5,11 +5,11 @@ export class RacingCarView {
     this.nameSubmit = document.querySelector("#car-names-submit");
     this.countInput = document.querySelector("#racing-count-input");
     this.countSubmit = document.querySelector("#racing-count-submit");
-
-    // 최종 우승자 h4 태그
+    this.winnerOutput = document.querySelector("#racing-winners");
     this.winnerH4 = document.querySelector("#racing-winners").parentElement;
-    this.makeNewDiv();
 
+    // 레이스 결과 태그
+    this.makeNewDiv();
     this.raceResults = document.querySelector("#race-results");
   }
 
@@ -24,10 +24,10 @@ export class RacingCarView {
   }
 
   // 실행 결과, 최종 우승자 사이에 div 생성
+  // this.winnerH4.parentNode == div#app
   makeNewDiv() {
     const newDiv = document.createElement("div");
     newDiv.id = "race-results";
-
     this.winnerH4.parentNode.insertBefore(newDiv, this.winnerH4);
   }
 
@@ -39,8 +39,14 @@ export class RacingCarView {
       this.raceResults.appendChild(textNode);
       this.raceResults.appendChild(br);
     });
-    
+
     this.raceResults.appendChild(document.createElement("br"));
+  }
+
+  // 우승자 결과 반환
+  showWinner(winnerList) {
+    const textNode = document.createTextNode(winnerList.join(", "));
+    this.winnerOutput.replaceChildren(textNode);
   }
 
   // 시도 횟수 입력값 반환
