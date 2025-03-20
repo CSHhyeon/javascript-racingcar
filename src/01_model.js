@@ -31,4 +31,36 @@ export class Car {
     return nameList.every(name => name.length < 6);
   }
 
+  /* 이 아래는 시도 횟수 입력칸 관련된 부분 */
+
+  // 시도 횟수 입력값 검증 (정수인지, 0 이상인지 확인)
+  isValidCount(count) {
+    return Number.isInteger(count) && (count > 0);
+  }
+
+  // 차 하나하나마다 조건에 맞으면 전진 (무작위 값이 4 미만이면 전진 X)
+  moveDistance() {
+    for(let car of this.carList) {
+      const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
+
+      if (randomNumber < 4) {
+        car.doMoveForward = false;
+        car.movedDistance = 0;
+      } else {
+        console.log("upper 4")
+        car.doMoveForward = true;
+        car.movedDistance = randomNumber;
+        car.totalDistance += randomNumber;
+      }
+    }
+  }
+
+  // 출력할 값 생성
+  returnMovedForward() {
+    let resultList = [];
+    
+  }
+
+  // 우승자 출력
+  showWinner() {}
 }

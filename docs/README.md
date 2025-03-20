@@ -34,20 +34,17 @@
 2단계) 시도할 횟수 입력칸(racing-count-input)과 버튼(racing-count-submit) 활성화
 
 ### 4. 횟수 입력값 검증(isValidCount)
-1단계) 숫자인지 확인(isNaN)
-2단계) 정수인지 확인(isInteger)
-3단계) 0 이상인지 확인
+1단계) 정수인지 확인(isInteger)
+2단계) 0 이상인지 확인
 -> 1, 2, 3 단계 통과하지 않으면 alert 창 띄우기
 -> 모두 만족하면 5번(checkMoveDistance) 진행
 
-### 5. 전진 조건 확인(checkMoveDistance)
+### 5. 전진 조건 확인하며 전진(moveDistance)
 for...of 사용해 자동차 객체 배열 돌며 하나씩 확인
-1단계) 입력받은 cnt--
-2단계) 0~9 사이에서 무작위 값 구하기
-3단계) 4 미만이면 moveForward에 false 넣고 continue,
-      4 이상이면 moveForward에 true, moveDistance에 무작위 값 넣기
-4단계) 6번 함수 호출(showMovedForward)
-5단계) 다음 루프 돌기
+1단계) 0~9 사이에서 무작위 값 구하기
+2단계) 4 미만이면 doMoveForward에 false 넣고 continue,
+       4 이상이면 doMoveForward에 true, movedDistance에 무작위 값 넣기
+3단계) 6번 함수 호출(showMovedForward)
 
 ### 6. 값 출력(showMovedForward)
 자동차 이름, 각 자동차 전진 횟수 넣은 HTML 생성

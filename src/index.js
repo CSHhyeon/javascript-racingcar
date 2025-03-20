@@ -34,17 +34,29 @@ class RacingCarController {
     this.model.saveCar(nameList);
     // 시도 횟수칸 활성화
     this.view.enableCount();
-  
-  
-
-  
   }
 
   // 횟수 확인 버튼 클릭 시 처리
   handleCountSubmit(event) {
     event.preventDefault();
-    const countInput = this.view.getCountInput();
+    let countInput = Number(this.view.getCountInput());
 
+    // 시도 횟수 입력값 검증 (정수인지, 0 이상인지)
+    if (!this.model.isValidCount(countInput)) {
+      alert("0 이상의 정수를 입력하세요.");
+      return;
+    }
+
+    // 입력받은 값만큼 전진 & 출력값 생성
+    while(countInput > 0) {
+      this.model.moveDistance();
+      //this.model.showMovedForward();
+      console.log(this.model.getCars());
+      countInput--;
+    }
+    
+    // 우승자 출력
+    this.model.showWinner();
   }
 }
 
