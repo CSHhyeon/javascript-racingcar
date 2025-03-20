@@ -26,4 +26,16 @@ export class RacingCarView {
   bindCountSubmit(handler) {
     this.countSubmit.addEventListener("click", handler);
   }
+
+  // 시도 횟수 입력칸 & 확인 버튼 비활성화
+  disableCount() {
+    this.countInput.disabled = true;
+    this.countSubmit.disabled = true;
+  }
+
+  // 시도 횟수 입력칸 & 확인 버튼 활성화
+  enableCount() {
+    this.countInput.disabled = false;
+    this.countSubmit.disabled = false;
+  }
 }
