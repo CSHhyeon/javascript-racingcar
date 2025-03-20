@@ -49,9 +49,8 @@ class RacingCarController {
 
     // 입력받은 값만큼 전진 & 출력값 생성
     while(countInput > 0) {
-      this.model.moveDistance();
-      //this.model.showMovedForward();
-      console.log(this.model.getCars());
+      const movedResult = this.model.moveDistance();
+      this.view.showRaceResult(movedResult);
       countInput--;
     }
     

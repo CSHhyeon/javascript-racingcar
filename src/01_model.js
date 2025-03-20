@@ -8,8 +8,6 @@ export class Car {
     this.carList = nameList.map((name) => (
       {
         name,
-        doMoveForward: false,
-        movedDistance: 0,
         totalDistance: 0
       }
     ));
@@ -40,25 +38,20 @@ export class Car {
 
   // 차 하나하나마다 조건에 맞으면 전진 (무작위 값이 4 미만이면 전진 X)
   moveDistance() {
+    let movedResult = [];
+
     for(let car of this.carList) {
       const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
 
       if (randomNumber < 4) {
-        car.doMoveForward = false;
-        car.movedDistance = 0;
+        movedResult.push(`${car.name}: `);
       } else {
-        console.log("upper 4")
-        car.doMoveForward = true;
-        car.movedDistance = randomNumber;
         car.totalDistance += randomNumber;
+        movedResult.push(`${car.name}: ${"-".repeat(randomNumber)}`);
       }
     }
-  }
 
-  // 출력할 값 생성
-  returnMovedForward() {
-    let resultList = [];
-    
+    return movedResult;
   }
 
   // 우승자 출력

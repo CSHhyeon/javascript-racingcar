@@ -39,6 +39,8 @@ export class RacingCarView {
       this.raceResults.appendChild(textNode);
       this.raceResults.appendChild(br);
     });
+    
+    this.raceResults.appendChild(document.createElement("br"));
   }
 
   // 시도 횟수 입력값 반환
